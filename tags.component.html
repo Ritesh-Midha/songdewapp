@@ -1,0 +1,23 @@
+<!-- <input matInput  maxlength="256" [(ngModel)]="tagName" > -->
+
+
+
+
+
+
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your Tag name?</p>
+  <mat-form-field class="example-form-field">
+    <mat-label>Tag Name</mat-label>
+    <input matInput type="text" [(ngModel)]="tagName">
+    <button mat-button *ngIf="tagName" matSuffix mat-icon-button aria-label="Clear" (click)="tagName=''">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button type="button" mat-button [mat-dialog-close]="undefined">No Thanks</button>
+  <button type="button" mat-button [mat-dialog-close]="tagName" cdkFocusInitial>Ok</button>
+</div>
+

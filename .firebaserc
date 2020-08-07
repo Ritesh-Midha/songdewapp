@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "songdewapp-e7ef9": {
+      "hosting": {
+        "songdewapp": [
+          "songdewapp-e7ef9"
+        ]
+      }
+    }
+  }
+}

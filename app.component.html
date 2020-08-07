@@ -1,0 +1,85 @@
+<div class="header">
+  <img src="\assets\songdew-logo.png">
+</div>
+<form [formGroup]="registerForm" (submit)="submitForm()" class="registerForm">
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Fullname</mat-label>
+      <input matInput #message maxlength="256" placeholder="Ex. Ritesh Midha" formControlName="fullName">
+      <mat-hint align="start"><strong>First name and Last name</strong> </mat-hint>
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      <mat-error *ngIf="registerForm.controls.fullName.invalid" align="start"><strong>Please enter your
+          Fullname</strong> </mat-error>
+      <!-- <mat-error *ngIf="registerForm.controls.fullName.hasError('fullnamearrayInvalid')" align="start"><strong>Please
+          enter your
+          Fullname</strong> </mat-error> -->
+    </mat-form-field>
+
+    <div class="clear"></div>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>E-mail</mat-label>
+      <input matInput #email maxlength="256" placeholder="Ex. ritesh.midha@gmail.com" formControlName="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+      <mat-hint align="end">{{email.value.length}} / 256</mat-hint>
+      <mat-error *ngIf="registerForm.controls.email.hasError('pattern')" align="start"><strong>Please enter valid E-mail
+          Id</strong> </mat-error>
+      <mat-error *ngIf="registerForm.controls.email.hasError('required')" align="start"><strong>Please enter your E-mail
+          Id</strong> </mat-error>
+    </mat-form-field>
+    <div class="clear"></div>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Age</mat-label>
+      <input type="number" matInput #age formControlName="age" max="120" min="18">
+      <mat-error *ngIf="registerForm.controls.age.hasError('max')" align="start">Age should be less than <strong>120
+          year</strong> </mat-error>
+      <mat-error *ngIf="registerForm.controls.age.hasError('min')" align="start">Age should be more than or equal to
+        <strong>18 year</strong> </mat-error>
+      <mat-error *ngIf="registerForm.controls.age.hasError('required')" align="start"><strong>Please enter your
+          age</strong> </mat-error>
+    </mat-form-field>
+
+    <div class="clear"></div>
+    <div class="clear"></div>
+
+    <button class="uploadclass" type="button" mat-button color="warn" (click)="onClick()">
+      <mat-icon>file_upload</mat-icon>
+      Upload
+    </button>
+    <br />
+
+    <div *ngFor="let file of files;let i = index">
+      <mat-card class="example-card" role="listitem">
+        <span>
+          {{ (file.data.name.length>20)? (file.data.name | slice:0:20)+'..':(file.data.name) }}</span>
+        <div class="tagdivclass">
+          <mat-icon class="tagclass" matTooltip="Add Tags" *ngIf="file.data.tags.length < 5" (click)="addTags(file)">
+            loyalty</mat-icon>
+          <mat-icon class="tagclass" matTooltip="Delete file" (click)="delete(i)">delete</mat-icon>
+        </div>
+        <div class="clear"></div>
+        <mat-chip-list class="example-chip">
+          <mat-chip class="example-box" *ngFor="let tag of file.data.tags" [removable]="removable"
+            (removed)="remove(file, tag)">
+            {{tag}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+
+          </mat-chip>
+        </mat-chip-list>
+
+        <!-- <a *ngIf="file.data.tags.length < 5" (click)="addTags(file)">Add Tags</a> -->
+      </mat-card>
+    </div>
+
+    <input type="file" id="fileUpload" name="fileUpload" multiple="multiple" style="display:none;"
+      accept="audio/mp3,audio/wav,audio/flac" />
+
+    <div class="clear"></div>
+
+
+    <button class="submitClass" type="submit" mat-raised-button color="primary"
+      [disabled]="!registerForm.valid">Submit</button>
+    <button class="submitClass" type="button" mat-raised-button color="primary" (click)="reset()">Reset</button>
+  
+  <form>

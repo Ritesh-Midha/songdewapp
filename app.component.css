@@ -1,0 +1,66 @@
+ul,
+li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+}
+.example-full-width {
+      width: 200px;
+}
+.registerForm {
+      top: 30%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+
+      position: absolute;
+      box-align: center;
+
+
+}
+#file-label {
+      display: inline-flex;
+      vertical-align: middle;
+      font-size: 12px;
+      line-height: 18px;
+}
+
+#file-label mat-icon {
+      font-size: 18px;
+      text-align: center;
+}
+
+#file-label a {
+      cursor: pointer;
+}
+.example-card {
+  border-radius: 0px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  max-width: 200px;
+}
+.tagclass {
+      margin-right: 5px;
+      width: 17px;
+      height: 17px;
+      font-size: 17px;
+      border-radius: 50px;
+      color: #fff;
+      background: brown;
+      cursor: default;
+
+}
+.submitClass {
+      margin-top: 22px;
+      margin-left: 10px;
+}
+.uploadclass {
+      margin-left: 31px;
+}
+.header {
+  padding: 30px;
+  text-align: center;
+  background: #0037ff;
+  color: white;
+  font-size: 30px;
+}
